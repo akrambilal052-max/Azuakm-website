@@ -1,29 +1,32 @@
 <script>
-    const noBtn = document.getElementById("noBtn");
-    const yesBtn = document.getElementById("yesBtn");
-    const loveMessage = document.getElementById("loveMessage");
-    const question = document.getElementById("question");
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const loveMessage = document.getElementById("loveMessage");
+const question = document.getElementById("question");
+const container = document.querySelector(".container");
 
-    noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("mouseover", moveButton);
 
-    function moveButton() {
-        const padding = 20;
+function moveButton() {
+    const containerRect = container.getBoundingClientRect();
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
 
-        const maxX = window.innerWidth - noBtn.offsetWidth - padding;
-        const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+    const maxX = containerRect.width - btnWidth;
+    const maxY = containerRect.height - btnHeight;
 
-        const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
-        const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
 
-        noBtn.style.position = "fixed";
-        noBtn.style.left = randomX + "px";
-        noBtn.style.top = randomY + "px";
-    }
+    noBtn.style.position = "absolute";
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+}
 
-    yesBtn.addEventListener("click", function() {
-        question.style.display = "none";
-        yesBtn.style.display = "none";
-        noBtn.style.display = "none";
-        loveMessage.style.display = "block";
-    });
+yesBtn.addEventListener("click", function() {
+    question.style.display = "none";
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
+    loveMessage.style.display = "block";
+});
 </script>
