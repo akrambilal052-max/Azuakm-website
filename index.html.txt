@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Do you love me?</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            border: none;
+        }
+
+        #yesBtn {
+            background-color: #ff4da6;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #999;
+            color: white;
+            position: absolute;
+        }
+
+        #loveMessage {
+            font-size: 35px;
+            color: #ff1a75;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="question">Do you love me?</h1>
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+    <h2 id="loveMessage">Yes, I love you akm ❤️</h2>
+</div>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const loveMessage = document.getElementById("loveMessage");
+    const question = document.getElementById("question");
+
+    noBtn.addEventListener("mouseover", moveButton);
+    noBtn.addEventListener("click", moveButton);
+
+    function moveButton() {
+        const maxX = window.innerWidth - noBtn.offsetWidth;
+        const maxY = window.innerHeight - noBtn.offsetHeight;
+
+        const randomX = Math.floor(Math.random() * maxX);
+        const randomY = Math.floor(Math.random() * maxY);
+
+        noBtn.style.left = randomX + "px";
+        noBtn.style.top = randomY + "px";
+    }
+
+    yesBtn.addEventListener("click", function() {
+        question.style.display = "none";
+        yesBtn.style.display = "none";
+        noBtn.style.display = "none";
+        loveMessage.style.display = "block";
+    });
+</script>
+
+</body>
+</html>
